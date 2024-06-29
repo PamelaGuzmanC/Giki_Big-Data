@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ news_name }} - {{ news_date }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .cluster {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+        .article {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .article img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 15px;
+        }
+        .article-content {
+            flex: 1;
+        }
+        .title {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .source {
+            color: gray;
+        }
+        .summary {
+            margin-top: 5px;
+        }
+        .date {
+            color: darkgray;
+            font-size: 0.9em;
+        }
+        .keywords {
+            margin-top: 5px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ news_name }}</h1>
+    <h2>{{ news_date }}</h2>
+    {% for cluster, articles in clusters_dict.items() %}
+        <div class="cluster">
+            <h3>Cluster {{ cluster }}</h3>
+            <div class="keywords">Important words: {{ articles[0].keywords | join(', ') }}</div>
+            <div class="articles-container">
+                {% for article in articles %}
+                    <div class="article">
+                        <img src="{{ article.image_url }}" alt="Article Image">
+                        <div class="article-content">
+                            <div class="title"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></div>
+                            <div class="source">{{ article.source }}</div>
+                            <div class="date">{{ article.date }}</div>
+                            <div class="summary">{{ article.summary }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>
