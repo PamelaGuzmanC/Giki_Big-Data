@@ -44,28 +44,35 @@
             font-style: italic;
             color: #555;
         }
+        .sentiment {
+            margin-top: 5px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <h1>{{ news_name }}</h1>
     <h2>{{ news_date }}</h2>
-    {% for cluster, articles in clusters_dict.items() %}
+    {% for cluster_id, articles in clusters_dict.items() %}
         <div class="cluster">
-            <h3>Cluster {{ cluster }}</h3>
-            <div class="keywords">Important words: {{ articles[0].keywords | join(', ') }}</div>
-            <div class="articles-container">
+            <h3>Cluster {{ cluster_id }}</h3>
+            <ul>
                 {% for article in articles %}
-                    <div class="article">
+                    <li class="article">
+                        {% if article.image_url %}
                         <img src="{{ article.image_url }}" alt="Article Image">
+                        {% endif %}
                         <div class="article-content">
-                            <div class="title"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></div>
+                            <div class="title"><a href="{{ article.url }}">{{ article.title }}</a></div>
                             <div class="source">{{ article.source }}</div>
-                            <div class="date">{{ article.date }}</div>
                             <div class="summary">{{ article.summary }}</div>
+                            <div class="sentiment"><strong>Sentiment:</strong> {{ article.sentiment_category }}</div>
+                            <div class="date"><em>{{ article.date }} {{ article.time }}</em></div>
+                            <div class="keywords">{{ article.keywords | join(", ") }}</div>
                         </div>
-                    </div>
+                    </li>
                 {% endfor %}
-            </div>
+            </ul>
         </div>
     {% endfor %}
 </body>
