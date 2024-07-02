@@ -116,6 +116,9 @@
 	},
 	"Reuters Business News": {
 	  "rss": ["http://feeds.reuters.com/reuters/businessNews"]
+	},
+	"Wired": {
+		"rss": ["https://www.wired.com/"] 
 	}
   }
   
