@@ -13,9 +13,15 @@
             border-bottom: 1px solid #ccc;
             padding-bottom: 20px;
         }
-        .article {
+        .articles-container {
             display: flex;
-            margin-bottom: 15px;
+            flex-wrap: wrap; /* Ensures articles wrap to the next line */
+            gap: 20px; /* Adds space between columns */
+        }
+        .article {
+            width: calc(50% - 10px); /* Two columns, minus gap */
+            margin-bottom: 20px; /* Space between articles */
+            display: flex;
         }
         .article img {
             max-width: 100px;
@@ -28,6 +34,7 @@
         .title {
             font-weight: bold;
             font-size: 1.2em;
+            margin-bottom: 5px; /* Space between title and link */
         }
         .source {
             color: gray;
@@ -40,9 +47,15 @@
             font-size: 0.9em;
         }
         .keywords {
-            margin-top: 5px;
+            margin-top: 10px; 
             font-style: italic;
             color: #555;
+        }
+        .article img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-bottom: 10px; /* Add space above the image */
+            margin-right: 15px;
         }
     </style>
 </head>
@@ -58,7 +71,8 @@
                     <div class="article">
                         <img src="{{ article.image_url }}" alt="Article Image">
                         <div class="article-content">
-                            <div class="title"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></div>
+                            <div class="title">{{ article.title }}</div>
+                            <a href="{{ article.url }}" target="_blank">Read more</a>
                             <div class="source">{{ article.source }}</div>
                             <div class="date">{{ article.date }}</div>
                             <div class="summary">{{ article.summary }}</div>
