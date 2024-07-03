@@ -83,12 +83,6 @@
 		"https://seekingalpha.com/market_currents.xml"
 	  ]
 	},
-	"Reddit": {
-	  "rss": [
-		"https://www.reddit.com/r/stocks/.rss",
-		"https://www.reddit.com/r/StockMarket/.rss"
-	  ]
-	},
 	"New York Times": {
 	  "rss": [
 		"https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml",
