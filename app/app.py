@@ -8,7 +8,6 @@ import numpy as np
 
 st.set_page_config(layout="wide")
 
-
 ARTICLES_CACHE_FILE = 'article_cache.json'
 
 @st.cache_data(ttl=3600)  # Cache the data for 1 hour
